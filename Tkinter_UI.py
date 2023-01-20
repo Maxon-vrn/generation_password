@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter.ttk import *
 import string
 import random
 import os
@@ -14,8 +15,8 @@ h = h - 200
 window.minsize(600, 400)
 # window.maxsize(550, 350)
 window.geometry('600x400+{}+{}'.format(w, h))  # задали размеры окна to center window
-photo = PhotoImage(file='./data/index.png')  # create object photo
-window.iconphoto(False, photo)  # не работает отображение иконки фото в верхней части !!!
+#photo = PhotoImage(file='./data/index.png')  # create object photo
+#window.iconphoto(False, photo)  # не работает отображение иконки фото в верхней части !!!
 # window.config(bg='#464646')  # цвет фона окна
 
 '''импортируем в строковом варинте буквы и цифры для будующей обработки и добавления в список'''
@@ -86,23 +87,33 @@ def generate_password():  # generate password
 
         spisok_generate_pass = []  # обнуляем список сохранения для очистки и формирования нового списка паролей
 
-        label_len_pass["text"] = len_pass.get()  # длинна сгенерированных пароля
-        len_password = int(label_len_pass["text"])
+        if len_pass.get():
+            label_len_pass["text"] = len_pass.get()  # длинна сгенерированных пароля
+            len_password = int(label_len_pass["text"])
+        else:
+            table_name.delete(0, 'end')  # очистим окно перед выводом информации
+            table_name.insert(0, 'Выберите длинну пароля')
 
-        label_count_pass["text"] = count_pass.get()  # количество сгенерированных пароля
-        count_password = int(label_count_pass["text"])
+        if count_pass.get():
+            label_count_pass["text"] = count_pass.get()  # количество сгенерированных пароля
+            count_password = int(label_count_pass["text"])
+        else:
+            table_name.delete(0, 'end')  # очистим окно перед выводом информации
+            table_name.insert(0, 'Выберите количество паролей')
 
         for i in password_string:  # обработка полученных значений из списка
             for j in i:  # проход выбраного значения списка по симпвольно
                 string_pass += j
 
-        while count_password:
-            passw = random.sample(string_pass, (len_password))  # в переменную помещается первый сгенерированный пароль
-            spisok_generate_pass.append(
-                ''.join(passw))  # сохраняются данные в список для будующего сохранения на компьютере
-            table_name.insert(0, ''.join(passw))  # выводится пароль в строку номер -ind,значение - ''.join(passw).
-            count_password += -1
-
+        if count_password > 0 and len_password > 0:
+            while count_password:
+                passw = random.sample(string_pass, (len_password))  # в переменную помещается первый сгенерированный пароль
+                spisok_generate_pass.append(''.join(passw))  # сохраняются данные в список для будующего сохранения на компьютере
+                table_name.insert(0, ''.join(passw))  # выводится пароль в строку номер -ind,значение - ''.join(passw).
+                count_password += -1
+        else:
+            table_name.delete(0,'end')  #очистим окно перед выводом информации
+            table_name.insert(0, 'Выберите количество символов для пароля и количество нужных паролей')
 
 def save_pass():  # функция сохранения сгенерованного пароля
 
@@ -139,11 +150,10 @@ abc = Checkbutton(text='Да/Нет', command=abc_funcktion,
 abc.grid(row=4, column=1)  # bolean var
 
 table_name = Listbox()  # Text(width=20,height=7)
-table_name.grid(row=4, column=2, columnspan=2, rowspan=5, sticky=W + E + N + S,
-                padx=5)  # rowspa and colomnspan - объединение ячеек
-# scroll = Scrollbar(command=table_name.yview)
-# scroll.grid(row=4, column=3,sticky=N+S+E)
-# table_name.config(yscrollcommand=scroll.set)
+table_name.grid(row=4, column=2, columnspan=2, rowspan=5, sticky=W + E + N + S,padx=5)  # rowspa and colomnspan - объединение ячеек
+#scroll = Scrollbar(command=table_name.xview)
+#scroll.grid(row=4, column=3,sticky=N+S+E)
+#table_name.config(xscrollcommand=scroll.set)
 
 Label(text='Буквы верхнего регистра: ').grid(row=5, column=0, sticky=W)
 enabled_ABC = IntVar()
@@ -158,12 +168,12 @@ enabled_sumbol = IntVar()
 Checkbutton(text='Да/Нет', command=simbols_funcktion, variable=enabled_sumbol).grid(row=7, column=1)
 
 Label(text="Длинна паролей:").grid(row=8, column=0, sticky=W)  # вытянуть количество from_ ?
-len_pass = Spinbox(width=7, from_=1, to=100)
+len_pass = Spinbox(width=7, from_=1, to=50)
 len_pass.grid(row=8, column=1, pady=20)
 label_len_pass = Label()
 
 Label(text="Количество паролей:").grid(row=9, column=0, sticky=W)  # вытянуть количество from_ ?
-count_pass = Spinbox(width=7, from_=1, to=100)
+count_pass = Spinbox(width=7, from_=1, to=50)
 count_pass.grid(row=9, column=1, pady=20)
 label_count_pass = Label()
 
@@ -172,5 +182,3 @@ Button(text="Сгенерировать", command=generate_password).grid(row=10
 Button(text="Сохранить", command=save_pass).grid(row=10, column=3)
 
 window.mainloop()
-
-#hi
