@@ -162,7 +162,7 @@ def save_pass():  # функция сохранения сгенерованно
 def about_autor():
     window = Tk()
     window.title("Об авторе")
-    window.geometry('600x400+200+100')
+    window.geometry('600x300+200+100')
     window.resizable(False, False)
 
     def callback_max():
