@@ -3,8 +3,8 @@
 
 PS инструкция для Linux ubuntu(deb)
 - python3 3.10.6
-- sudo apt-get install python3-tk      
-- pip install tk                       
+- sudo apt-get install python3-tk 
+- pip install tk (подразумевается, что pip у вас стоит)   
 
 Теперь вы можете скопировать и доработать под свои нужды файл:
 - Tkinter_UI.py
