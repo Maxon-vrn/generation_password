@@ -19,10 +19,10 @@ h = h - 200
 window.geometry('600x350+{}+{}'.format(w, h))  # задали размеры окна to center window
 window.resizable(False, False)  #отключение возможности раскрыть окно наполную или растянуть
 #photo = PhotoImage(file='./data/index.png')  # create object photo
-#window.iconphoto(False, photo)  # не работает отображение иконки фото в верхней части !!!
+#window.iconphoto(False, photo)
 # window.config(bg='#464646')  # цвет фона окна
 
-'''импортируем в строковом варинте буквы и цифры для будующей обработки и добавления в список'''
+#импортируем в строковом варинте буквы и цифры для будующей обработки и добавления в список
 lowerstring = string.ascii_lowercase
 apperstring = string.ascii_uppercase
 numer = string.digits
@@ -38,7 +38,7 @@ def abc_funcktion():
         print(password_string)
     else:
         password_string.pop(0)
-        print(password_string)
+        #print(password_string) - проверка вывода в терминале
 
 
 def ABC_funcktion():
@@ -50,7 +50,7 @@ def ABC_funcktion():
         for i in range(len(password_string)):
             if password_string[i] == apperstring:
                 password_string.pop(i)
-        print(password_string)
+        #print(password_string) - проверка вывода в терминале
 
 
 def num_funcktion():
@@ -62,7 +62,7 @@ def num_funcktion():
         for i in range(len(password_string)):
             if password_string[i] == numer:
                 password_string.pop(i)
-        print(password_string)
+        #print(password_string) - проверка вывода в терминале
 
 
 def simbols_funcktion():
@@ -74,15 +74,14 @@ def simbols_funcktion():
         for i in range(len(password_string)):
             if password_string[i] == punctuation:
                 password_string.pop(i)
-        print(password_string)
+        #print(password_string) - проверка вывода в терминале
 
 
 def generate_password():  # generate password
-    if len(password_string) == 0:  # проверка списка по длинне чтобы было из чего собирать пароль,и обрабатывает пустое значение
+    if len(password_string) == 0:  # проверка списка по длинне чтобы было из чего собирать пароль и обрабатывает пустое значение
         table_name.insert(0, 'Выберите несколько параметров')
     else:
-        table_name.delete(0,
-                          'end')  # это должно было очистить содержимое окна,перед выводом в него сгеенерированного результата
+        table_name.delete(0,'end') #очищаем ранее появившиеся сообщение
         string_pass = ''
         global count_pass  # количество паролей для генерации - число
         global len_pass  # длинна сгенерированных пароля
@@ -191,7 +190,7 @@ Label(text="Выбери подходящие тебе параметры:", fon
 
 Label(text='Буквы нижнего регистра: ').grid(row=4, column=0, sticky=W,padx=5)  # текст
 enabled_abc = IntVar()
-abc = Checkbutton(text='Да/Нет', command=abc_funcktion,variable=enabled_abc)  # variable=enabled - обработка изменения состояния
+abc = Checkbutton(text='Да/Нет', command=abc_funcktion,variable=enabled_abc)
 abc.grid(row=4, column=1)  # bolean var
 
 table_name = Listbox()  # Text(width=20,height=7)
@@ -212,12 +211,12 @@ Label(text='Использовать символы: ').grid(row=7, column=0, st
 enabled_sumbol = IntVar()
 Checkbutton(text='Да/Нет', command=simbols_funcktion, variable=enabled_sumbol).grid(row=7, column=1)
 
-Label(text="Длинна паролей:").grid(row=8, column=0, sticky=W,padx=5)  # вытянуть количество from_ ?
+Label(text="Длинна паролей:").grid(row=8, column=0, sticky=W,padx=5)
 len_pass = Spinbox(width=7, from_=1, to=50)
 len_pass.grid(row=8, column=1, pady=20)
 label_len_pass = Label()
 
-Label(text="Количество паролей:").grid(row=9, column=0, sticky=W,padx=5)  # вытянуть количество from_ ?
+Label(text="Количество паролей:").grid(row=9, column=0, sticky=W,padx=5)
 count_pass = Spinbox(width=7, from_=1, to=50)
 count_pass.grid(row=9, column=1, pady=20)
 label_count_pass = Label()
