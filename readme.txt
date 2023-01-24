@@ -12,4 +12,4 @@ PS инструкция для Linux ubuntu(deb)
 На Windows есть скомпелированный вариант через auto-py-to-exe и вы можете его скачать и протестировать:
 - Generation pass.exe
 
-![](https://github.com/Maxon-vrn/generation_password/blob/master/Generate%20password.png) 
+![](https://github.com/Maxon-vrn/generation_password/blob/master/Generate%20password.png) - пример работающего приложения.
