@@ -79,6 +79,7 @@ def simbols_funcktion():
 
 def generate_password():  # generate password
     if len(password_string) == 0:  # проверка списка по длинне чтобы было из чего собирать пароль и обрабатывает пустое значение
+        table_name.delete(0, 'end')
         table_name.insert(0, 'Выберите несколько параметров')
     else:
         table_name.delete(0,'end') #очищаем ранее появившиеся сообщение
@@ -211,7 +212,7 @@ Label(text='Использовать символы: ').grid(row=7, column=0, st
 enabled_sumbol = IntVar()
 Checkbutton(text='Да/Нет', command=simbols_funcktion, variable=enabled_sumbol).grid(row=7, column=1)
 
-Label(text="Длинна паролей:").grid(row=8, column=0, sticky=W,padx=5)
+Label(text="Длина паролей:").grid(row=8, column=0, sticky=W,padx=5)
 len_pass = Spinbox(width=7, from_=1, to=50)
 len_pass.grid(row=8, column=1, pady=20)
 label_len_pass = Label()
