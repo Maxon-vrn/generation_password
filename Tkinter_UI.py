@@ -91,16 +91,24 @@ def generate_password():  # generate password
         spisok_generate_pass = []  # обнуляем список сохранения для очистки и формирования нового списка паролей
 
         if count_pass.get():
-            label_count_pass["text"] = count_pass.get()  # количество сгенерированных пароля
-            count_password = int(label_count_pass["text"])
-
+            if  count_pass.get().isalpha():
+                table_name.delete(0, 'end')  # очистим окно перед выводом информации
+                table_name.insert(0, 'Введите число до 50')
+            else:
+                label_count_pass["text"] = count_pass.get()  # количество сгенерированных пароля
+                count_password = int(label_count_pass["text"])
         else:
             table_name.delete(0, 'end')  # очистим окно перед выводом информации
             table_name.insert(0, 'Выберите количество паролей')
 
-        if len_pass.get():
-            label_len_pass["text"] = len_pass.get()  # длинна сгенерированных пароля
-            len_password = int(label_len_pass["text"])
+
+        if len_pass.get():  # либо через цикл
+            if  len_pass.get().isalpha():
+                table_name.delete(0, 'end')  # очистим окно перед выводом информации
+                table_name.insert(0, 'Введите число до 50')
+            else:
+                label_len_pass["text"] = len_pass.get()  # длинна сгенерированных пароля
+                len_password = int(label_len_pass["text"])
         else:
             table_name.delete(0, 'end')  # очистим окно перед выводом информации
             table_name.insert(0, 'Выберите длинну пароля')
@@ -110,7 +118,7 @@ def generate_password():  # generate password
             for j in i:  # проход выбраного значения списка по симпвольно
                 string_pass += j
 
-        if 0 < count_password < 50 and 0 < len_password <50:
+        if 0 < count_password <= 50 and 0 < len_password <= 50:
             while count_password:
                 passw = random.sample(string_pass, (len_password))  # в переменную помещается первый сгенерированный пароль
                 spisok_generate_pass.append(''.join(passw))  # сохраняются данные в список для будующего сохранения на компьютере
@@ -118,10 +126,10 @@ def generate_password():  # generate password
                 count_password += -1
         elif count_password > 50:
                 table_name.delete(0, 'end')  # очистим окно перед выводом информации
-                table_name.insert(0, 'Количество паролей до 50')
+                table_name.insert(0, 'Количество паролей от 1 до 50')
         elif len_password > 50:
                 table_name.delete(0, 'end')  # очистим окно перед выводом информации
-                table_name.insert(0, 'Длинна паролей до 50')
+                table_name.insert(0, 'Длинна паролей от 1 до 50')
         else:
             table_name.delete(0,'end')  #очистим окно перед выводом информации
             table_name.insert(0, 'Выберите параметры')
