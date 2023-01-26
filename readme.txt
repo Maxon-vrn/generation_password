@@ -13,4 +13,4 @@ PS инструкция для Linux ubuntu(deb)
 - Generation pass.exe
 
 
-![Иллюстрация приложения](https://github.com/Maxon-vrn/generation_password/blob/master/Generate_pass.jpg)
+![Иллюстрация приложения](https://github.com/Maxon-vrn/generation_password/blob/master/data/Generate_pass.jpg)
