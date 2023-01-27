@@ -9,11 +9,6 @@ PS инструкция для Linux ubuntu(deb)
 Теперь вы можете скопировать и доработать под свои нужды файл:
 - Tkinter_UI.py
 
-На Windows есть скомпилированный вариант через auto-py-to-exe и вы можете его скачать и протестировать:
-- Generation pass.exe
-
-На Linux компилированный вариант через pyinstaller:
-dist/Tkinter_UI
 
 
 ![Иллюстрация приложения](https://github.com/Maxon-vrn/generation_password/blob/master/data/generate_pass.jpg)
