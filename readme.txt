@@ -12,5 +12,8 @@ PS инструкция для Linux ubuntu(deb)
 На Windows есть скомпилированный вариант через auto-py-to-exe и вы можете его скачать и протестировать:
 - Generation pass.exe
 
+На Linux компилированный вариант через pyinstaller:
+https://github.com/Maxon-vrn/generation_password/blob/master/dist/Tkinter_UI
+
 
 ![Иллюстрация приложения](https://github.com/Maxon-vrn/generation_password/blob/master/data/generate_pass.jpg)
