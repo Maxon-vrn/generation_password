@@ -13,7 +13,7 @@ PS инструкция для Linux ubuntu(deb)
 - Generation pass.exe
 
 На Linux компилированный вариант через pyinstaller:
-https://github.com/Maxon-vrn/generation_password/blob/master/dist/Tkinter_UI
+dist/Tkinter_UI
 
 
 ![Иллюстрация приложения](https://github.com/Maxon-vrn/generation_password/blob/master/data/generate_pass.jpg)
